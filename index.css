@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 14% 96%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 168 67% 14%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 60 14% 96%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 60 14% 92%;
+    --muted-foreground: 0 0% 29%;
+    --accent: 17 87% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 17 87% 58%;
+    --radius: 1.75rem;
+    
+    /* Custom GoCeylon Colors */
+    --gocoral: #F16D3B;
+    --goteal: #0B3A2E;
+    --gocream: #F6F6F2;
+    --gogold: #D4A853;
+    --gotropical: #2D5A3D;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#F6F6F2] text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .font-display {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F6F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0B3A2E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F16D3B;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* Button animations */
+.btn-primary {
+  @apply bg-[#F16D3B] text-white px-6 py-3 rounded-full font-semibold transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-[#d85a2e] transform -translate-y-0.5;
+}
+
+.btn-outline {
+  @apply border-2 border-white text-white px-6 py-3 rounded-full font-semibold transition-all duration-300;
+}
+
+.btn-outline:hover {
+  @apply bg-white text-[#0B3A2E];
+}
+
+/* Section transitions */
+.section-pinned {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Image overlay gradient */
+.image-overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.35) 100%);
+}
+
+/* Text shadow for readability */
+.text-shadow {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Page transition */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  @apply fixed inset-0 bg-[#F6F6F2] z-50 flex flex-col items-center justify-center;
+}
+
+/* Search pill */
+.search-pill {
+  @apply bg-white rounded-full px-6 py-4 flex items-center gap-4 shadow-xl;
+}
+
+/* Card styling */
+.glass-card {
+  @apply bg-white/95 backdrop-blur-sm rounded-[28px] shadow-lg;
+}
+
+/* Navigation link hover */
+.nav-link {
+  @apply relative text-white font-medium transition-colors duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[#F16D3B] transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
